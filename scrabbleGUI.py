@@ -118,17 +118,17 @@ class scrabble:
 
     def checkword(self):
         v = self.input.get()
-        if self.dict.check(v) is True:
-            for i in range(0,len(v)):
-                if v[i] is 'Z' or v[i] is 'X':
+        if self.dict.check(v):
+            for i in range(len(v)):
+                if v[i] == 'Z' or v[i] == 'X':
                     self.countxz = self.countxz + 1
             self.score = self.score + len(v) * self.countxz
-            for j in range(0, len(self.forget)):
+            for j in range(len(self.forget)):
                 self.letterbutton[self.forget[j]].destroy()
             self.input.delete(0, END)
             self.can.itemconfig(self.num, text=self.score)
         else:
-            for j in range(0, len(self.forget)):
+            for j in range(len(self.forget)):
                 self.letterbutton[self.forget[j]].configure(bg='red')
             self.input.delete(0, END)
         self.forget = []
